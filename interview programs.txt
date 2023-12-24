@@ -1,0 +1,796 @@
+ 1)duplicate characters in                                                             
+a given string 
+Krishna mohan
+duplicate characters are h
+duplicate characters are n
+duplicate characters are a
+ 
+String str="krishna mohan";
+char[] ch=str.toCharArray();
+for(int i=0;i<str.length();i++) {
+for(int j=i+1;j<str.length();j++)
+{
+if(ch[i]==ch[j]) {
+System.out.println("duplicate characters are "+ch[j]);
+}}
+===========================
+duplicate words in a given string 
+input     str="krishna 214 mohan 214 krishna mohan sheereesh bobby sheereesh";
+out put krishna
+214
+mohan
+sheereesh
+
+
+public static void main(String[] args) {
+		 String str="krishna 214 mohan 214 krishna mohan sheereesh bobby sheereesh";
+	String[]	words= str.split(" ");
+ 
+	 
+	for(int i=0;i<words.length;i++) {
+		for(int j=i+1;j<words.length;j++) {
+			
+		
+		 if(words[i].equals(words[j])) {
+			System.out.println(words[i]); 
+		 }
+		}
+	}
+
+	}
+ 
+
+
+
+
+
+==============================================	
+2)string reverse 
+krishna mohan
+anhsirk nahoM
+ 
+String str="krishna Mohan";
+String[] words=str.split(" ");
+String revString=" ";
+//split function will split into array based on which is given " ",if given character it will splits from the character it divides into an array
+//the Java length variable describes the size of an array, 
+//while Java's length() method tells you how many characters a text String contains.
+for(int i=0;i<words.length;i++) {
+String word=words[i];
+String revWords=" ";
+for (int j=word.length()-1;j>=0;j--) {
+revWords=revWords+word.charAt(j);
+	}
+revString=revString+revWords;
+	}
+System.out.println(revString);
+}
+}
+==================
+smallest word in given String of words
+input String str="krishna mohan vallabhaipatel eee rajsh raghu raghuvaran kumar rrr re q af";
+
+output  q
+
+public static void main(String[] args) {
+
+		 String str="krishna mohan vallabhaipatel eee rajsh raghu raghuvaran kumar rrr re q af";
+
+//in order to find length in digits we have to change int longword="";
+		String words[]=str.split(" "); 
+		String smallestword=words[0];
+		for(String word:words) {
+			if(word.length()<smallestword.length()) {
+				smallestword=word;
+			}
+		}
+		System.out.println(smallestword);
+}
+	
+}
+
+====================================
+longest word in a group of words 
+input input String str="krishna mohan vallabhaipatel eee rajsh raghu raghuvaran kumar rrr re q af";
+
+out put  vallabhaipatel
+
+public static void main(String[] args) {
+	 
+			 String str="krishna mohan  vallabhaipatel eee rajsh raghu raghuvaran  kumar rrr re q af";
+	String longword="";
+	//in order to find length in digits we have to change int longword="";
+			String words[]=str.split(" ");
+			for(String word:words) {
+				if(word.length()>longword.length()) {
+					longword=word;
+				}
+			}
+			System.out.println(longword);
+		}
+
+	}
+
+=========================================================
+length of  largest word in a string of words 
+input  String str="krishna mohan vallabhaipatel  sheereeshnvergveup eee rajsh raghu raghuvaran kumar rrr re q af";
+output 18
+
+ String str="krishna mohan vallabhaipatel  sheereeshnvergveup eee rajsh raghu raghuvaran kumar rrr re q af";
+
+		//in order to find length in digits we have to change int longword="";
+				String words[]=str.split(" "); 
+				int wordlength=0;
+				for(String word:words) {
+					if(word.length()>wordlength) {
+						wordlength=word.length();
+					}
+				}
+				System.out.println(wordlength);
+
+	}
+
+}
+
+
+
+=============================================
+3)to count vowels and consonants spaces digits 
+krishna mohan 9 5 8 2 6 
+vowels 4  consonants  8  digits  5  spaces  7
+ 
+String str="krishna mohan 9 5 8 2 6 ";
+int vowels=0;
+int consonants=0;
+int digits=0;
+int spaces=0;
+String lowerstr=str.toLowerCase();
+for(int i=0;i<lowerstr.length();i++) {
+char ch =lowerstr.charAt(i);
+if(ch=='a'||ch=='e'||ch=='i'||ch=='o'||ch=='u') {
+vowels++;
+}
+else if (ch>'a'&&ch<='z') {
+consonants++;
+}
+else if(ch>='0'&&ch<='9') {
+digits++;
+}
+else if(ch>=' ') {
+spaces++;
+}
+}
+System.out.println("vowels "+ vowels +"  consonants  "+consonants +"  digits  "+digits +"  spaces  "+spaces);
+}
+}
+=================================
+4)
+string reverse
+krishna mohan
+nahom anhsirk
+ 
+ String str="krishna mohan";
+		 String rev=" ";
+		 char[] ch=str.toCharArray();
+		 for (int i=ch.length-1;i>=0;i--) {
+			 rev=rev+str.charAt(i);
+		 }
+System.out.println(rev);
+	}}
+===================================
+5)
+to count characters and digits in a given string using Hash map
+krishna mohan 7 8 9 7
+{ =5, a=2, h=2, i=1, k=1, m=1, n=2, o=1, r=1, s=1, 7=2, 8=1, 9=1}
+ 
+String str="krishna mohan 7 8 9 7";
+char []ch=str.toCharArray();
+HashMap<Character,Integer> map=new HashMap<Character,Integer>();
+for(char cha:ch) {
+if (!map.containsKey(cha)) {
+map.put(cha , 1);
+}
+else {
+int value=map.get(cha);
+map.put(cha, value+1);
+}
+}
+System.out.println(map);
+}
+}
+=========================
+6)to count number of words 
+krishna mohan sheereesh mohan krishna ramesh
+{mohan=2, krishna=2, sheereesh=1, ramesh=1}
+ 
+String str="krishna mohan sheereesh mohan krishna ramesh";
+String[] words=str.split(" ");
+HashMap<String,Integer> map=new HashMap<String,Integer>();
+for(String word:words) {
+if(!map.containsKey(word)) {
+map.put(word, 1);
+}
+ else
+{
+int value=map.get(word);
+map.put(word, value+1);
+}
+}
+System.out.println(map);
+}
+}
+==================
+7)=================
+to count number of digits in array using hashmap
+ input -->   int [] number= {12, 34 ,44, 23 ,12 ,56, 64, 12, 34, 44};
+output---> {64=1, 34=2, 23=1, 56=1, 12=3, 44=2}
+
+
+
+public static void main(String[] args) {
+		 int [] number= {12, 34 ,44, 23 ,12 ,56, 64, 12, 34, 44};
+		Map<Integer,Integer> map=new HashMap<Integer,Integer>();
+		 
+		for( int eachnumber: number) {
+			if(!map.containsKey(eachnumber)) {
+				map.put(eachnumber, 1);
+			}
+			else
+			{
+				int value=map.get(eachnumber);
+				map.put(eachnumber, value+1);
+			}
+		}
+System.out.println(map);
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+8)
+to get the digits in ascending order
+5, 4, 3, 1, 2
+1
+2
+3
+4
+5
+ 
+
+int array[]= {5,4,3,1,2,};
+for(int i=0;i<array.length;i++) {
+for(int j=i+1;j<array.length;j++) {
+int temp=0;
+if(array[i]>array[j]) {
+temp=array[i];
+array[i]=array[j];
+array[j]=temp;
+}}
+ System.out.println(array[i]);
+ }
+}
+}
+===============================
+9) count of duplicate numbers in an array
+1,2,2,3,4,5,77,77,77,99,99
+ elelment are  1 occurance is  1
+ elelment are  2 occurance is  2
+ elelment are  3 occurance is  1
+ elelment are  4 occurance is  1
+ elelment are  5 occurance is  1
+ elelment are  77 occurance is  3
+ elelment are  99 occurance is  2
+
+
+int arr[]= {1,2,2,3,4,5,77,77,77,99,99};
+for(int i=0;i<arr.length;i++) {
+int	count=1;
+for(int j=i+1;j<arr.length;j++) {
+if(arr[i]==arr[j]) {
+count++; 
+}	
+else 
+break;
+}			 
+System.out.println(" elelments are  "+arr[i]+" occurance is  " +count);				 
+i+=count-1;
+}
+}
+}	 
+ 
+10)
+to print the specific characters in a  given String 
+input AHCECLWLXO 
+
+output
+
+H
+E
+L
+L
+O
+public class Practice9999 {
+
+	public static void main(String[] args) {
+		String str="AHCECLWLXO";
+	char[]	word=str.toCharArray();
+
+	for(int i=1;i<word.length;i+=2) {
+	
+		System.out.println(word[i]);
+	}
+
+	}
+
+}
+
+ 11)to find missing number in given array
+input  int arr[]= {1,2,3,4,5,6,7,8,10};
+out put 9
+
+public class PagesArray {
+
+	public static void main(String[] args) {
+	 int arr[]= {1,2,3,4,5,6,7,8,10};
+	 int sum1=0;
+	 int sum2=0;
+	 for(int i=0;i<arr.length;i++) {
+		 sum1=sum1+arr[i];
+	 }
+	  for(int i=1;i<=10;i++) {
+		  sum2=sum2+i;
+	  }
+  System.out.println("Missing number is "+ (sum2-sum1));
+	}
+
+}
+
+12)to find prime number or not in an given array of numbers
+input int arr[]={1,2,3,4,5,6,7,8,9}
+ouput not prime number1
+it is prime number2
+it is prime number3
+not prime number4
+it is prime number5
+not prime number6
+it is prime number7
+not prime number8
+not prime number9
+
+
+public class PrimeNumber {
+
+	public static void main(String[] args) {
+		int array[]= {1,2,3,4,5,6,7,8,9};
+		
+		for(int i=0;i<array.length;i++) {
+			{
+				int count=0;
+				for(int j=1;j<=array[i];j++) {
+					if(array[i]%j==0) {
+						count++;
+					}
+				}
+					if(count==2) {
+						System.out.println("it is prime number"+array[i]);
+				}
+				else
+				{
+					System.out.println("not prime number"+array[i]);
+				}
+			}
+		}
+
+	}
+
+}
+
+13) to find max and min number in an array 
+int array[]= {12,122,13,14,444,65,19};
+output maximum number is 444
+minimum number is 12
+public class MaxMinArray {
+
+	public static void main(String[] args) {
+		 int array[]= {12,122,13,14,444,65,19};
+		 int min =array[0];
+		 int max =array[0];
+		 
+		 for(int i=1;i<array.length;i++) {
+			 if(array[i]>max)
+				 max=array[i];
+			 if(array[i]<min)
+				 min=array[i];
+				 
+		 }
+		 System.out.println("maximum number is"+max);
+		 System.out.println("minimum number is "+min);
+		 	}
+
+}
+14)
+to print specific numbers in an given array  and for example print only negative numbers from given an array of postive and negative numbers
+
+Input int array[]= {10,-99,20,45,-9,-5,55,9};
+output -99
+-9
+-5
+
+public class PickNegativenumbersUsingForEachLoop {
+
+	public static void main(String[] args) {
+		  
+		int array[]= {10,-99,20,45,-9,-5,55,9};
+	for(int i=0;i<array.length;i++) {
+		
+		if(array[i]<0) {
+			System.out.println(array[i]);
+		}
+	}
+		
+		
+	}
+
+}
+
+using for each loop 
+
+15) to given String is anagram or not 
+input heart
+output heart 
+ 
+
+public class AnagramProgram {
+
+	public static void main(String[] args) {
+	 String s1="heart";
+	 String s2="earth";
+	 char[] ch1  =s1.toCharArray();
+	 char[] ch2=s2.toCharArray();
+ Arrays.sort(ch1);
+	 Arrays.sort(ch2);
+Boolean	result =Arrays.equals(ch1,ch2);
+if(result==true) {
+	System.out.println("given string is anagram");
+}
+else {
+	System.out.println("given string is not anagram");
+}
+
+	 
+	}
+
+}
+===============================
+Hash map using  to find unique elelments
+input int array[]= {1,2,3,4,5,1,1,1,2,3,4,5};
+output [1, 2, 3, 4, 5]
+
+public static void main(String[] args) {
+		 int array[]= {1,2,3,4,5,1,1,1,2,3,4,5};
+		 Map<Integer,Integer> map=new HashMap<Integer, Integer>();
+		 for( int i=0;i<array.length;i++) {
+			 map.put(array[i], i);
+			 
+		 }
+		 System.out.println(map.keySet());
+	}
+}
+===============================================
+16)to print reverse each word using hash map
+example input Krishna mohan 
+               output       nahom anhsirK
+
+
+
+
+
+
+	public static void main(String[] args)   {
+	     // Create a HashMap to store the character positions
+        HashMap<Integer, Character> charMap = new HashMap<>();
+
+        String input = "Krishna mohan";
+        String reversedString = "";
+
+        // Store the characters of the input string in the HashMap
+        for (int i = 0; i < input.length(); i++) {
+            charMap.put(i, input.charAt(i));
+        }
+
+        // Iterate through the HashMap in reverse order and build the reversed string
+        for (int i = input.length() - 1; i >= 0; i--) {
+            reversedString += charMap.get(i);
+        }
+
+        // Print the reversed string
+        System.out.println(reversedString);
+    }
+}
+  =========================================   
+  17)
+to put specific numbers in last 
+input       {3,4,0,1,2,0,8}
+output  {3,4,1,2,8,0,0}   
+
+
+public static void main(String[] args) {
+		 
+		int array[]= {3,4,0,1,2,0,8};
+		int count=0;
+		List<Integer> elements=new ArrayList<Integer>();
+		
+		for(int i=0;i<array.length;i++) {
+			if(array[i]!=0) {
+				elements.add(array[i]);
+				
+			}
+			else
+			{
+				count++;
+			}
+		}
+		for(int i=1;i<=count;i++) {
+			
+			elements.add(0);
+			
+		}
+		
+	System.out.println(elements);
+	}
+	
+	
+
+}      
+=====================================
+swaping of two numbers     using TEMP   
+inpu x=24 ; y=99;
+output y=99, x=24;
+public static void main(String[] args) {
+		int x= 24;;
+ int y=99;
+ int temp=x;
+x=y;
+y=temp;
+System.out.println(x + " "+ y);
+		 
+		 
+	}
+
+}
+============================================
+swapping of two numbers with out using TEMP
+input x=10;
+input y=20;
+
+
+	public static void main(String[] args) {
+		 
+		 
+		int x= 10;;
+		 int y=20;
+		  x=x+y;
+		  y=x-y;
+		  x=x-y;
+		  System.out.println(x +" "   + " "+  y);
+				 
+	}
+=========================================
+
+
+
+==========================================
+odd numbers  in a given array
+
+public static void main(String args[]){
+int a[]={1,2,5,6,3,2};
+System.out.println("Odd Numbers:");
+for(int i=0;i<a.length;i++){
+if(a[i]%2!=0){
+System.out.println(a[i]);
+}
+
+==========================================
+fibonacci numbers 
+0 1 1 2 3 5 8 13 21 34
+
+public static void main(String[] args) {
+  int n1=0,n2=1,sum=0;;
+  //println means it prints next line
+  System.out.print(n1+" "+n2);
+for(int i=2;i<10;i++) {
+	// i=2 ,below 10 numbers only 
+	 sum=n1+n2;
+	 System.out.print(" "+sum);
+	 n1=n2;
+	 n2=sum;
+	 
+	 
+}
+ }
+
+
+==================================
+delete duplicate numbers and print count beside
+ input is   AABBSSVVVCD
+ouput     A2B2S2V3C1D1
+
+
+public static void main(String[] args) {
+		 String str = "AABBSSVVVCD";
+	       int count = 1;
+	        for (int i = 0; i <str.length(); i = i + count) {
+	        	 
+	           count = 1;
+	            for (int j = i + 1; j < str.length(); j++) {
+	                if (str.charAt(i) == str.charAt(j)) {
+	                    count = count + 1;
+	                } else {
+	                    
+	                    break;
+	                }
+	            }//end of inner for
+	            System.out.print(str.charAt(i) + "" + count);
+	        }//end of outer for
+
+=======================================
+delete duplicate characters from a  given string 
+input     aabbssvcdddd
+output  absvcd
+
+	public static void main(String[] args) {
+		String str="aabbssvcddddvvvv";
+		String temp="";
+	char [] charray=str.toCharArray();
+	for(Character ch:charray) {
+		if(temp.indexOf(ch)==-1) {
+			temp=temp+ch;
+			
+			
+		}
+	}
+	System.out.println("" +temp);
+	}
+
+}
+
+==================================
+delete  duplicate words from a given string
+
+input   "krishna mohan sheereesh bobby ramesh krishna mohan";
+output  krishna mohan sheereesh bobby ramesh 
+
+public static void main(String[] args) {
+	 String str="krishna mohan sheereesh bobby ramesh krishna mohan";
+	 String []words=str.split(" ");
+	 String temp="";
+	 
+	 for(String word:words) {
+		 if(temp.indexOf(word)==-1) {
+			 temp=temp+word+" ";
+			 
+		 }
+	 }
+	 
+System.out.println(temp);
+	}
+
+}
+
+====================================
+delete duplicate numbers from an array
+
+input int array[]={1,2,3,4,5,6,7,8,9,1,2,3,4,5,6,7,9,9,7,7};
+out put       1  2  3  4  5  6  7  8  9
+
+public static void main(String[] args) {
+int array[]={1,2,3,4,5,6,7,8,9,1,2,3,4,5,6,7,9,9,7,7};
+Arrays.sort(array);
+for(int i=0;i<array.length;i++) {
+for(int j=i+1;j<array.length;j++) {
+if(array[i]==array[j]) {
+	array[i]=-1;
+		}
+		}
+		}
+
+for(int i=0;i<array.length;i++) {
+if(array[i]!=-1) {
+System.out.print("  "+array[i]);
+}
+}
+}
+ 
+=========================
+using  hash map remove duplicates
+input is  int array[]= {1,2,1,2,3,4,5,6};
+output is [1, 2, 3, 4, 5, 6]
+public static void main(String[] args) {
+ 
+ int array[]= {1,2,1,2,3,4,5,6};
+ Map<Integer, Integer> map=new HashMap<Integer,Integer>();
+ for( int number:array) {
+	  map.put(number, 1);
+	 
+ }
+
+ System.out.println(map.keySet());
+	}
+
+
+}
+ 
+
+
+
+
+========================
+using set remove duplicates
+input  int array[]= {1,2,3,4,5,5,6,1,2,3,4,6,7,8};	
+output [1, 2, 3, 4, 5, 6, 7, 8]
+
+public static void main(String[] args) {
+		 
+		 int array[]= {1,2,3,4,5,5,6,1,2,3,4,6,7,8};
+	 Set<Integer> set=new HashSet<>();
+ for(int i=0;i<array.length;i++) {
+	 set.add(array[i]);
+ }
+ System.out.println(set );
+	}
+}		 
+
+=========================
+to replace specific character from string
+input  String str="123worldline123";
+ouput worldline
+
+  
+		String str="123worldline123";
+	String	word=str.replaceAll("123","");
+	System.out.println(word);
+================================
+
+palindrome or not
+input 555
+out put p
+public static void main(String[] args) {
+	  
+		int num =5555;  
+	       int reveresenumber=0;
+	       int tempnumer=num;
+	       while(tempnumer!=0) {
+	    	 int lastdigit=tempnumer%10;
+	    	 reveresenumber=reveresenumber*10+lastdigit;
+	    	 tempnumer=tempnumer/10;
+	       }
+	      if(num==reveresenumber)
+	      {
+	    	  System.out.println("p");
+	      }
+	      else
+	      {
+	    	  System.out.println("not");
+	      }
+	   } 
+	
+	}  
+	
+		
+
+
+ 

@@ -1,0 +1,61 @@
+
+  Introduction::::::
+iam sireesh i have completed my engineering in computer science.
+Earlier i was in different domain.
+during that time learned manual testing and joined as a manual tester.i worked   around 1 and half years and my company given training on automation after that i  gone through IJP and moved on to the automation. 
+From the past 4 and half years im working in selenium with java in cucumber framework.
+
+
+Roles--- and ---Responsibilities ::::::
+As a testengineer I will go through the documents(GitHub),if at all any doubts are there we will be clarified in the team meetings.
+We will get high level scenarios and test cases and we will have predifined project template which will get from the git hub and we will write test scripts as per the guidelines provided to us.
+After the task is completed .I will upload the script in git hub later which will reviewed by peer.
+
+Cucumber ---Frame---- work:::::
+
+Currently we are using cucumber BDD frame work with page object model design pattern.
+In cucumber we are having featurefiles, In feature files we are having scenarios and inside the scenarios we are writing the test steps using the gherkin language keywords like Given,when,Then,And.
+ we are having stepDefinitions for these steps.
+InStepDefinitionPackage we will be having class for each and every feature.
+And Inside the class we are having methods for each and every step present in the feature file.
+we are having runner file through which feature files are executed
+
+PageObjectModel::::
+coming to pageobjectmodel  we are creating separate classes for each and every page . 
+In each class we will identify  the webelements and we will write respective methods for each and
+ every action performed on the webelement.
+To use these methods in our testcases or stepDefintions we have to create the object of that respective page class 
+and while creating the page object we have to pass the webdriver object as a parameter to the constructor.
+
+Folder Structure ::::::
+Depending upon the pom.xml we are running the TESTRUNNERFILE. 
+through the test runner file it will go to the respective feature file
+As per the feature file it will go to the STEPDEFINITIONS.
+In STEPDEFINITION PACKAGE we will be having class for each and every feature.
+we are also having HOOKS FOLDER where we are writing before and after related functionalities.
+we also have PAGES FOLDER, as we are using page object model we are creating classes for each and every page.
+we are also having COMMONMETHODS FOLDER in that we are having 
+                          1) SELENIUM SPECIFIC METHODS
+                           2)PROJECT SPECIFIC METHODS
+coming to UTILITIES FOLDER we are writing methods related to excel sheets,property files and browser related methods.
+for reports generation we are using SPARK EXTENT REPORTS  and 
+we also get the screenshots for the failed test cases in the screen shot folder.
+
+and for LOGS we are using LOG4J2.PROPERTIES to get the logs of the scenario.
+
+Project.........
+Green field manual testing
+This is a case management to monitor the customer transaction activities that exceeds the defined thresholds. 
+When the customer activity seems suspicious/ unusual,
+ the respective instance will be delegated to next level investigation or should be reported to authorities. 
+All the rules should be regulated by FinCEN.
+
+Norkom ---
+we used  for screening Individuals or Entities at the time of opening an account with HSBC. 
+We compare our customer information with World-check information to known whether 
+particular individual or entity having any allegations.
+ Any kind of modification/changes done again screening will be done.
+ Other applications used CC (Client Connect), BMM (Browser Main Menu) and CIF (Client Information and funds).
+OWS ---
+OWS is an upgrade version of Norkom. Here we find all the customers or entities information in a single window.
+ Bank will maintain a list of products which are taken by an Individual or Entity. Screening will be done on regular bases. 

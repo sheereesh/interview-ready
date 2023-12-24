@@ -1,0 +1,287 @@
+=====================================
+window handles specific window handle:
+
+ WebDriverManager.chromedriver().setup();
+	WebDriver driver=new ChromeDriver();
+	driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
+                 driver.findElement(By.xpath("//a[contains(text(),'OrangeHRM, Inc')]")).click();
+	String parent window=driver.getWindowhandle();
+	Set<String> windowsIDs=driver.getWindowHandles();
+	List<String> windowListIDs=new ArrayList(windowsIDs);
+	for (String windowID:windowListIDs) {
+	String Pagetitle=driver.switchTo().window(windowID).getTitle();
+if(Pagetitle.equals("OrangeHRM HR Software | Free & Open Source HR Software | HRMS | HRIS | OrangeHRM")) {
+			
+			Thread.sleep(5000);
+			driver.close();} } }
+			
+webtables:
+-----------------all columns and rows------------------------------------------
+
+public static void main(String[] args) {
+		WebDriverManager.chromedriver().setup();
+		WebDriver driver=new ChromeDriver();
+		driver.get("https://the-internet.herokuapp.com/");
+		driver.manage().window().maximize();
+		driver.findElement(By.xpath("//div/ul/li/a[contains(text(),'Sortable Data Tables')]")).click();
+		int rows=driver.findElements(By.xpath("//table[@id=\"table1\"]//tbody/tr")).size();
+		System.out.println("number of rows "+rows);
+		int colums=driver.findElements(By.xpath("//table[@id=\"table1\"]/thead/tr/th")).size();
+		System.out.println("number of columns "+ colums);
+		
+	for(int r=1;r<=rows;r++)
+	{
+		for(int c=1;c<colums;c++) {
+			 
+		String	data=driver.findElement(By.xpath("//table[@id=\"table1\"]/tbody/tr["+r+"]/td["+c+"]")).getText();
+		System.out.println(data);
+	}
+		System.out.println();
+	}
+
+	}
+}
+==============================
+ particular column and do find max and min number
+
+public class ParticularColumn {
+
+	public static void main(String[] args) {
+		 WebDriverManager.chromedriver().setup();
+		 WebDriver driver=new ChromeDriver();
+		 driver.get("https://omayo.blogspot.com/");
+		 driver.manage().window().maximize();
+		 int rows=driver.findElements(By.xpath("//table[@id=\"table1\"]//tbody//tr")).size();
+		
+		// System.out.println(rows);
+		 
+  
+		 List<String> listData=new ArrayList<String>();
+		  for(int i=1;i<=rows;i++) {
+			  
+			 for(int j=2;j<=2;j++) {
+				String data=driver.findElement(By.xpath(" //table[@id=\"table1\"]//tbody//tr["+i+"]//td["+j+"]")).getText();
+				 listData.add(data);
+			 
+			 }
+		  }
+			 
+		  
+		  int array[]=listData.stream().mapToInt(Integer::parseInt).toArray();
+		  int max =array[0];
+			 int min=array[0];
+		  for(int i=0;i<array.length;i++) {
+			  if(array[i]>max)  
+				  max=array[i];
+				 if(array[i]<min)
+					 min=array[i];
+			   
+		  }
+		  System.out.println("max number is "+max);
+		  System.out.println("min number is "+min);
+		  
+		  
+		
+ 
+	 
+ 
+
+	} 
+
+	}
+
+ 
+
+
+
+
+
+
+
+Particular row and coulmn 
+====================================
+
+public static void main(String[] args) {
+		 WebDriverManager.chromedriver().setup();
+		 WebDriver driver=new ChromeDriver();
+		 driver.get("https://the-internet.herokuapp.com/");
+		 driver.manage().window().maximize();
+			driver.findElement(By.xpath("//div/ul/li/a[contains(text(),'Sortable Data Tables')]")).click();
+String text=driver.findElement(By.xpath("//table[@id=\"table1\"]/tbody/tr[3]/td[5]")).getText();
+System.out.println("url text" +text);
+driver.get(text);
+
+	}
+
+}
+Number of rows and column
+===================================
+
+public static void main(String[] args) {
+		
+		WebDriverManager.chromedriver().setup();
+		WebDriver driver=new ChromeDriver();
+		driver.get("https://the-internet.herokuapp.com/");
+		driver.manage().window().maximize();
+		driver.findElement(By.xpath("//div/ul/li/a[contains(text(),'Sortable Data Tables')]")).click();
+		int rows=driver.findElements(By.xpath("//table[@id=\"table1\"]//tbody/tr")).size();
+		System.out.println("number of rows "+rows);
+		int colums=driver.findElements(By.xpath("//table[@id=\"table1\"]/thead/tr/th")).size();
+		System.out.println("number of columns "+ colums);
+		driver.close();
+	}
+
+}
+Screen shot 
+==================================
+
+File screenShotWithScenarioName=((TakesScreenshot)DriverManager.getDriver()).getScreenshotAs(OutputType.FILE);
+
+
+
+
+
+for sceanrio fails 
+hooks will write failed scenario in after
+
+
+	@After(order=1)
+	public void takeAndAttachScreenShotsToReports(Scenario scenario ) {
+		
+		
+		if(scenario.isFailed()) {
+			try {
+				
+				ScreenShot.takeScreenShotForFailedTestCase(scenario);
+			} catch (Exception e) {
+			System.out.println("please check the screenshot output");
+			}
+			
+		}
+	}
+=======================================================
+TO ReRUn Failes Scenarios
+
+
+//to run the failed test cases which is generated in the below text file
+
+		features="@target/failedRerun.txt",
+
+
+		glue = {"stepDefinations","hooks"},
+
+		plugin = {"pretty",
+
+
+				//for exten reports
+		"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
+		
+		//for running failed testcases
+		"rerun:target/failedRerun.txt"},
+		
+		dryRun = false,
+		monochrome = true
+		)
+
+parallel testing in cucumber
+=================================
+
+ 
+
+@CucumberOptions(
+		
+		features = "src/test/resources/features/page1/",
+		glue = {"stepDefinations","hooks"},
+		dryRun = false,
+		monochrome = true
+		)
+
+public class Test_Run_All extends AbstractTestNGCucumberTests{
+	
+      @Override
+      @DataProvider(parallel=true)
+	public Object[][] scenarios(){
+		return super.scenarios();
+	}
+}
+
+ <configuration>
+ <parallel>methods</parallel>
+ <useUnlimitedThreads>true</useUnlimitedThreads>
+
+
+we call the scenarios method from the parent class and set the parallel attribute to true
+ 
+
+ Read data from excel sheet using Hash Map
+=================================================================
+public static void main(String[] args) throws IOException {
+	 
+		FileInputStream obj=new FileInputStream((System.getProperty("user.dir")+"/target/student.xlsx"));
+	
+XSSFWorkbook workbook=new XSSFWorkbook(obj);
+ XSSFSheet   sheet=workbook.getSheet("student data");
+int rows=sheet.getLastRowNum();
+
+Map<String,String> data=new HashMap<String,String>();
+for(int r=0;r<=rows;r++) {
+String	key=sheet.getRow(r).getCell(0).getStringCellValue();
+String value=sheet.getRow(r).getCell(1).getStringCellValue();
+data.put(key, value);
+}
+for(Map.Entry entry: data.entrySet()) {
+	System.out.println(entry.getKey()+"  "+entry.getValue());
+}
+}
+} 
+ ==========================================
+broken links 
+400 bad request  
+401 unauthorized 
+402 payment requiered
+403 forbidden
+404 not found
+
+
+public static void main(String[] args) throws MalformedURLException {
+WebDriverManager.chromedriver().setup();
+WebDriver driver=new ChromeDriver();
+driver.get("http://www.deadlinkcity.com/");
+int brokenlinks=0;
+list<WebElement> links=driver.findElements(By.tagName("a"));
+System.out.println(links.size());
+for( WebElement link :links) {
+String url=link.getAttribute("href");
+if(url==null||url.isEmpty()) {
+System.out.println("url is empty");
+	continue;
+		}
+	URL linkUrl=new URL(url);
+		try {
+	HttpURLConnection httpconnect=(HttpURLConnection)linkUrl.openConnection();
+	httpconnect.connect();
+	if(httpconnect.getResponseCode()>=400) {
+	System.out.println(httpconnect.getResponseCode()+url+"  is" +"broken links");
+	brokenlinks++;
+		}
+	else
+		{
+	System.out.println(httpconnect.getResponseCode()+url+"  is"+ "valid link");
+
+				}		
+
+			} catch (Exception e) {
+//System.out.println(e);
+			}
+
+
+
+
+		}
+
+
+		System.out.println("no of broken links:" +brokenlinks);
+
+	}
+
+}
